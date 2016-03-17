@@ -11,4 +11,7 @@ class LotteriesController < ApplicationController
   		render index
   	end
   end
+  def check_login
+  	
+  end
 end

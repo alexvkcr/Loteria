@@ -1,2 +1,8 @@
-<h1>Lotteries#login</h1>
-<p>Find me in app/views/lotteries/login.html.erb</p>
+<h1>Ingrese sus credenciales</h1>
+<%= form_tag("/check_login", method: "post")  do%>
+	<div>
+		<p class="strong-purple">Usuario: <%= email_field_tag 'user' %></p>
+		<p class="strong-purple">Contraseña: <%= password_field_tag 'password' %></p>
+		<p><%= button_tag 'Acceder'%></p>
+	</div>
+<% end %>
