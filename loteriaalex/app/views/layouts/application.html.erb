@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Loteriaalex</title>
+  <title>Loteria Alex</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<table class="layout be-purple white">
+		<tr >
+			<td class="col-md">
+				¡LOTERIA!
+			</td>
+
+			<td class="col-md">
+				<% if @usuario.nil? #No hay usuario%>
+					<%= link_to "Ingresar" , "login"%>	
+				<% elsif @admin.nil? #Caso usuario%> 
+					Bienvenido <%= @usuario.user %>	
+				<% else #Caso admin%> 
+					<%= link_to "Listar usuarios" , "listar"%>	
+				<%end%>
+
+			</td>
+
+			<td class="col-md">
+				<% if @usuario.nil? #Caso no hay usuario%>
+					<%= link_to "Ingresar como admin" , "admin"%>	
+				<%else #Login realizado%>
+					<%= link_to "Número de loteria" , "numero"%>	
+				<%end%>
+			</td>
+		</tr>
+	</table>
 
 <%= yield %>
 

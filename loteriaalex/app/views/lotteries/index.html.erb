@@ -1,2 +1,8 @@
-<h1>Lotteries#index</h1>
-<p>Find me in app/views/lotteries/index.html.erb</p>
+<h1>Esta es la web de Loterias</h1>
+<% unless @usuario.nil?  %>
+<p> 
+	Usted ha iniciado sesión como
+	<%= @usuario.user %>.
+
+</p> 
+<%end%>
