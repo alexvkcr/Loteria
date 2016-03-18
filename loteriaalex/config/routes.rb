@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'lotteries/checklogin'
+
   get 'lotteries/login'
 
   get 'lotteries/index'

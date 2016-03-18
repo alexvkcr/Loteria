@@ -1,8 +1,8 @@
 <h1>Ingrese sus credenciales</h1>
-<%= form_tag("/check_login", method: "post")  do%>
+<%= form_tag("checklogin", method: "post")  do%>
 	<div>
-		<p class="strong-purple">Usuario: <%= email_field_tag 'user' %></p>
+		<p class="strong-purple">Usuario: <%= text_field_tag 'user' %></p>
 		<p class="strong-purple">Contraseña: <%= password_field_tag 'password' %></p>
-		<p><%= button_tag 'Acceder'%></p>
+		<p><%= submit_tag 'Acceder'%></p>
 	</div>
 <% end %>
