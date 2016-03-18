@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @lottery.email %>
+</p>
+
+<p>
+  <strong>Contraseña:</strong>
+  <%= @lottery.contraseña %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @lottery.usuario %>
+</p>
+
+<p>
+  <strong>Luckynumber:</strong>
+  <%= @lottery.luckynumber %>
+</p>
+
+<p>
+  <strong>Genero:</strong>
+  <%= @lottery.genero %>
+</p>
+
+<%= link_to 'Edit', edit_lottery_path(@lottery) %> |
+<%= link_to 'Back', lotteries_path %>

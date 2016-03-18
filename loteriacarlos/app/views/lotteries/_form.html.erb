@@ -1,0 +1,37 @@
+<%= form_for(@lottery) do |f| %>
+  <% if @lottery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lottery.errors.count, "error") %> prohibited this lottery from being saved:</h2>
+
+      <ul>
+      <% @lottery.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :contraseña %><br>
+    <%= f.text_field :contraseña %>
+  </div>
+  <div class="field">
+    <%= f.label :usuario %><br>
+    <%= f.text_field :usuario %>
+  </div>
+  <div class="field">
+    <%= f.label :luckynumber %><br>
+    <%= f.number_field :luckynumber %>
+  </div>
+  <div class="field">
+    <%= f.label :genero %><br>
+    <%= f.text_field :genero %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
