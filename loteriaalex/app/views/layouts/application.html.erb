@@ -13,24 +13,34 @@
 				¡LOTERIA!
 			</td>
 
-			<td class="col-md">
-				<% if @usuario.nil? #No hay usuario%>
-					<%= link_to "Ingresar" , "login"%>	
-				<% elsif @admin.nil? #Caso usuario%> 
-					Bienvenido <%= @usuario.user %>	
-				<% else #Caso admin%> 
-					<%= link_to "Listar usuarios" , "listar"%>	
-				<%end%>
-
+			<% if @usuario.nil? && @admin.nil? #Ni usuario ni admin%>
+			<td>
+				<%= link_to "Ingresar" , "login"%>	
+			</td>
+			<td>
+				<%= link_to "Ingresar como admin" , "admin"%>	
+			</td>
+			
+			<% elsif !@usuario.nil? && @admin.nil? #Sí usuario ni admin%>
+			<td>
+				Bienvenido <%= @usuario.user + ". "%>
+				<%= link_to "Cerrar sesión." , "logout"%>		
+			</td>
+			<td>
+				<%= link_to "Número de loteria" , "numero"%>	
 			</td>
 
-			<td class="col-md">
-				<% if @usuario.nil? #Caso no hay usuario%>
-					<%= link_to "Ingresar como admin" , "admin"%>	
-				<%else #Login realizado%>
-					<%= link_to "Número de loteria" , "numero"%>	
-				<%end%>
+			<% elsif @usuario.nil? && !@admin.nil? #No usuario sí admin%>
+			<td>
+				Bienvenido <%= @admin.user + ". "%>
+				<%= link_to "Cerrar sesión de admin." , "logoutadmin"%>		
 			</td>
+			<td>
+				<%= link_to "Número de loteria" , "numero"%>	
+			</td>
+
+			<%end%>
+
 		</tr>
 	</table>
 

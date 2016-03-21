@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
   post 'lotteries/checklogin'
+  post 'lotteries/checkadmin'
+  post 'lotteries/checksignup'
+
+  get 'lotteries/checksignup'
+
+  get 'lotteries/signup'
+
+  get 'lotteries/logoutadmin'
+
+  get 'lotteries/admin'
+
+  get 'lotteries/logout'
 
   get 'lotteries/login'
 

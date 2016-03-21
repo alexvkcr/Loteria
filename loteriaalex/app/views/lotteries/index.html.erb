@@ -3,6 +3,14 @@
 <p> 
 	Usted ha iniciado sesión como
 	<%= @usuario.user %>.
-
-</p> 
-<%end%>
+</p>
+<%end%> 
+<% unless @admin.nil?  %>
+<p> 
+	Usted ha iniciado sesión como
+	<%= @admin.user %>.
+</p>
+<%end%> 
+<p>
+	<%= flash.notice %>
+</p>
