@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   post 'lotteries/checklogin'
   post 'lotteries/checkadmin'
   post 'lotteries/checksignup'
+  post 'lotteries/savenumero'
+  post 'lotteries/reiniciar_loteria'
+
+  post 'lotteries/cambiar'
+
+  get 'lotteries/numero'
 
   get 'lotteries/checksignup'
 

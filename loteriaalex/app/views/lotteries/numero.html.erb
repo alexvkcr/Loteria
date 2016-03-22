@@ -1,0 +1,65 @@
+<% 	usuario = "usuario"
+	admin = "admin"
+	if @vista.nil?
+		vista ||= usuario
+	else
+		vista = @vista
+	end%>
+<%= flash.notice%>
+<%if vista == usuario%>
+
+	<%if @numero.nil?%>
+
+		<%if @loteria.nil? #Caso Vista:Usuario; Numero: NO establecido; Loteria: NO establecida%> 
+			<h1>Debe seleccionar su número de lotería</h1>
+			<h2>Todavía no se ha celebrado el sorteo, ¡aún puede ganar!</h2>
+			<h3>Debe seleccionar un número entre 0 y 9999</h3>
+			<%= render "formulario_numero" %>
+		<%else #Caso Vista:Usuario; Numero: NO establecido; Loteria: SI establecida%>
+			<h1>¡El sorteo ya se ha realizado!</h1>
+			<h2>Desafortunadamente, usted no seleccionó número</h2>
+			<h3>El número ganador es el <p class="strong-purple"><%= @loteria%></p> </h3>
+		<%end%>
+
+	<%else%>
+
+		<%if @loteria.nil? #Caso Vista:Usuario; Numero: SI establecido; Loteria: NO establecida%>
+			<h1>Ya ha seleccionado su número de lotería</h1>
+			<h2>Su número  es el <p class="strong-purple"><%= @numero%></p> </h2>
+			<h3>Dado que no se ha celebrado aún el sorteo, puede cambiar de número todavía</h3>
+			<%= form_tag("cambiar", method: "post") do%>
+			<%= submit_tag "Cambiar"%>
+			<%end%>
+		<%else#Caso Vista:Usuario; Numero: SI establecido; Loteria: SI establecida%>
+			<h1>¡El sorteo ya se ha realizado!</h1>
+			<%if @loteria == @numero#Caso Ha ganado%>
+				<h1>¡ENHORABUENA!</h1>
+				<h2><p class="strong-purple">Su número <%=@numero%> ha resultado ganador</p></h2>
+				<h3>Contacte con el administrador para reclamar su premio :)</h3>
+			<%else#Caso no ganador%>
+				<h2>Desafortunadamente, su número <%=@numero%> no ha sido premiado</h2>
+				<h3>El número ganador ha sido el</h3>
+				<h3 class="strong-purple"><%=@loteria%></h3>
+				<h4>Le deseamos más suerte la próxima vez</h4>
+			<%end%>
+		<%end%>		
+
+	<%end%>	
+
+<%elsif vista == admin%>
+	
+	<%if @loteria.nil? #No establecido número ganador%>
+		<h1>Hola Admin.</h1>
+		<h2>Debe seleccionar el número de lotería ganador</h2>
+		<%= render "formulario_numero", boton: "Guardar nº ganador" %>
+	<%else #Ya establecido número ganador (REINICIAR CONCURSO)%>
+		<h1>Hola Admin.</h1>
+		<h2>Ya se ha realizado el "sorteo"</h2>
+		<h3>El número que se 'sorteó' fue el <p class="strong-purple"> <%= @loteria-%> </p></h3>
+		<h3>Puede reiniciar la lotería si lo desea</h3>
+		<%= form_tag("reiniciar_loteria", method: "post") do%>
+		<%= submit_tag "Reiniciar Lotería"%>
+		<%end%>
+	<%end%>
+
+<%end%>

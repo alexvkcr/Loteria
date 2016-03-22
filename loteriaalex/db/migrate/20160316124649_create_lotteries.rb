@@ -3,7 +3,8 @@ class CreateLotteries < ActiveRecord::Migration
     create_table :lotteries do |t|
     	t.string :user
     	t.string :password
-    	t.boolean :admin, default: :false 
+    	t.boolean :admin, default: :false
+    	t.integer :numero 
 
     	t.timestamps null: false
     end
