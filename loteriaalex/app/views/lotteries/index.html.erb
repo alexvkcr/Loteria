@@ -1,0 +1,16 @@
+<h1>Esta es la web de Loterias</h1>
+<% unless @usuario.nil?  %>
+<p> 
+	Usted ha iniciado sesión como
+	<%= @usuario.user %>.
+</p>
+<%end%> 
+<% unless @admin.nil?  %>
+<p> 
+	Usted ha iniciado sesión como
+	<%= @admin.user %>.
+</p>
+<%end%> 
+<p>
+	<%= flash.notice %>
+</p>

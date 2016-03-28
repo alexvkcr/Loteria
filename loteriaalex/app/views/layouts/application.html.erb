@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loteria Alex</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<table class="layout be-purple white">
+		<tr >
+			<td class="col-md">
+				¡LOTERIA!
+			</td>
+
+			<% if @usuario.nil? && @admin.nil? #Ni usuario ni admin%>
+			<td>
+				<%= link_to "Ingresar" , "login"%>	
+			</td>
+			<td>
+				<%= link_to "Ingresar como admin" , "admin"%>	
+			</td>
+			
+			<% elsif !@usuario.nil? && @admin.nil? #Sí usuario ni admin%>
+			<td>
+				Bienvenido <%= @usuario.user + ". "%>
+				<%= link_to "Cerrar sesión." , "logout"%>		
+			</td>
+			<td>
+				<%= link_to "Número de loteria" , "numero"%>	
+			</td>
+
+			<% elsif @usuario.nil? && !@admin.nil? #No usuario sí admin%>
+			<td>
+				Bienvenido <%= @admin.user + ". "%>
+				<%= link_to "Cerrar sesión de admin." , "logoutadmin"%>		
+			</td>
+			<td>
+				<%= link_to "Número de loteria" , "numero"%>	
+			</td>
+
+			<%end%>
+
+		</tr>
+	</table>
+
+<%= yield %>
+
+</body>
+</html>
