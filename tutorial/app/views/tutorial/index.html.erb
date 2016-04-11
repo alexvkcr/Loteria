@@ -1,0 +1,17 @@
+<h1> Esta es la página principal de la aplicacion tutorial </h1>
+
+<% unless @usuario.nil? %> 
+
+<p>  Usted a iniciado sesión como : 
+
+<%= @usuario.user %>  </p>
+
+<% end %>
+
+<% unless @admin.nil? %>
+
+<p>	Usted ha iniciado sesión como : 
+
+<%= @admin.user %>  </p>
+
+<% end %>

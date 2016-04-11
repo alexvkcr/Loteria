@@ -1,0 +1,17 @@
+
+<h1> Esta es la página de administrador </h1>
+<p></p>
+
+
+<% 	page_to||="checkadmin"
+	boton||= "Acceder"
+%>
+<%= form_tag(page_to, method: "post")  do%>
+	<div>
+		<p><%= flash.notice %></p>
+		<p class="strong-purple"><%= "Administrador" %> <%= text_field_tag 'user' %></p>
+		<p class="strong-purple"><%= "Contraseña" %> <%= password_field_tag 'password' %></p>
+		<p><%= submit_tag boton%></p>
+	</div>
+<% end %>
+

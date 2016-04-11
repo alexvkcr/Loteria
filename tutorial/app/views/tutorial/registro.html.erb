@@ -1,0 +1,13 @@
+<h1> Esta es la página principal de Registro </h1>
+<% 	page_to||="checkregistro"
+	boton||= "Acceder"
+%>
+<%= form_tag(page_to, method: "post")  do%>
+	<div>
+		<p><%= flash.notice %></p>
+		<p><%= "Usuario" %> <%= text_field_tag 'user' %></p>
+		<p><%= "Contraseña" %> <%= password_field_tag 'password' %></p>
+		<p> <%= "Repita la Contraseña" %> <%= password_field_tag 'password_repeat' %></p>
+		<p><%= submit_tag boton%></p>
+	</div>
+<% end %>

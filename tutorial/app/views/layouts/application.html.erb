@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tutorial </title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+</head>
+<body>
+	<table class="layout be-green white">
+		<tr >
+			<td class="col-md">
+			
+			</td>
+
+			<% if @usuario.nil? && @admin.nil? #NO Usuario NO administrador%>
+			<td>
+				<%= link_to "Ingresar como usuario" , "login"%>	
+			</td>
+			<td>
+				<%= link_to "Ingresar como administrador" , "admin"%>	
+			</td>
+
+			<td>
+				<%= link_to "Inicio" , "index"%>	
+			</td>
+
+			
+			<% elsif !@usuario.nil? && @admin.nil? #Sí Usuario NO administrador%>
+			<td>
+				Bienvenido <%= @usuario.user + ". "%>
+				<%= link_to "Cerrar sesión." , "logout_usuario"%>		
+			</td>
+			<td>
+				<%= link_to "Número de loteria" , "numero"%>	
+			</td>
+			<td>
+				<%= link_to "Inicio" , "index"%>	
+			</td>
+
+			<% elsif @usuario.nil? && !@admin.nil? #NO Usuario SI administrador%>
+			<td>
+				Bienvenido <%= @admin.user + ". "%>
+				<%= link_to "Cerrar sesión de administrador." , "logout_administrador"%>		
+			</td>
+			<td>
+				<%= link_to "Número de loteria" , "numero"%>	
+			</td>
+			<td>
+				<%= link_to "Inicio" , "index"%>	
+			</td>
+			
+			<%end%>
+
+		</tr>
+	</table>
+
+<%= yield %>
+
+</body>
+</html>
